@@ -1,0 +1,31 @@
+package com.klef.fsad.exam.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import com.klef.fsad.exam.model.Hotel;
+import com.klef.fsad.exam.service.HotelService;
+
+@RestController
+@RequestMapping("/hotel")
+public class HotelController 
+{
+
+    @Autowired
+    private HotelService hotelService;
+
+    // POST → Add Hotel
+    @PostMapping("/add")
+    public Hotel addHotel(@RequestBody Hotel hotel)
+    {
+        return hotelService.addHotel(hotel);
+    }
+
+    // PUT → Update Hotel
+    @PutMapping("/update/{id}")
+    public Hotel updateHotel(@PathVariable int id, @RequestBody Hotel hotel)
+    {
+        return hotelService.updateHotel(id, hotel);
+    }
+
+}
